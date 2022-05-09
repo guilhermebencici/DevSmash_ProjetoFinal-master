@@ -1,0 +1,55 @@
+﻿@model DevSmash___Projeto_Final.Models.ViewModels.ClientesViewModel
+<link rel="stylesheet" href="~/css/EstiloServicos.css" asp-append-version="true" />
+
+@section Scripts{
+<script>
+    $('document').ready(AlterarMenu(3));
+</script>
+}
+
+<section class="wrapper style1">
+    <div class="container">
+        <div class="row gtr-200">
+            <div class="col-8 col-12-narrower">
+                <div id="content">
+                    <article>
+                        @if (TempData["Sucesso"] != null)
+                        {
+                            <div class="alert alert-success" role="alert">
+                                @TempData["Sucesso"]
+                            </div>
+                        }
+                        <header>
+                            <h1>Conheça nossos Serviços</h1>
+                            <hr />
+                            <br />
+                            <p>Nossa equipe é totalmente qualificada e está pronta para te oferecer o melhor</p>
+                        </header>
+                        <br />
+                        @foreach (var servico in Model.Servicos)
+                        {
+                            <header>
+                                <h2 class="servico">@servico.Nome</h2>
+                            </header>
+                            <span class="image featured"><img src="@servico.Imagem" alt="" /></span>
+                            <p>@servico.Descricao</p>
+                        }
+                    </article>
+                </div>
+            </div>
+            <div class="col-4 col-12-narrower">
+                <div id="sidebar">
+                    <section>
+                        <h3>
+                            Precisa de alguma de nossas soluções? <br />
+                            Nos envie uma mensagem!
+                        </h3>
+                        <footer>
+                            <a asp-action="FaleConosco" asp-controller="Home"><button class="button alt">Clique aqui para mais informações</button></a>
+                        </footer>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>     
